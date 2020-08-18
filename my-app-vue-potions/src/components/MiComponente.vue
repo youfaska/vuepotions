@@ -39,15 +39,88 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-card class="rounded5">
+          <v-card-text>{{print(calculate())}}</v-card-text>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <v-card class="rounded5">
+          <v-card-text>{{sumarPuntos()}} - {{sumarPuntos()}} - {{sumarPuntos()}}</v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="6" class="text-center">
+        <v-btn @click="anotherPrint()" fab dark large class="primary">
+          <v-icon dark>mdi-apple</v-icon>
+        </v-btn>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <v-card class="rounded5">
+          <v-card-text>VACIO</v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="6" class="text-center">
+        <v-tooltip left>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              v-on="on"
+              @click="aumentarContador()"
+              fab
+              dark
+              large
+              class="primary"
+            >
+              <v-icon dark>fas fa-plus</v-icon>
+            </v-btn>
+          </template>
+          <span>Incrementar el valor del contador</span>
+        </v-tooltip>
+      </v-col>
+
+      <v-col cols="12" md="6">
+        <v-card class="rounded5">
+          <v-card-text>{{contador}} - Su double sería: {{double}}</v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" md="3" class="text-center">
+        <v-card class="rounded5">
+          <v-card-text>Como variables {{contador-double}}</v-card-text>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12" md="3">
+        <v-card class="rounded5">
+          <v-card-text>Como string {{contador}} - {{double}}</v-card-text>
+        </v-card>
+      </v-col>
+       <v-col cols="12" md="3">
+        <v-card class="rounded5">
+          <v-card-text>Metodo y computed juntos {{sumarCincoDouble()}}</v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import { urlApiNode } from "@/config.js";
+let total = 0;
 export default {
   name: "MiComponente",
   data() {
     return {
+      numero: 5,
+      contador: 1,
       urlApiNode: urlApiNode,
       width: 300,
       miTexto: {
@@ -68,6 +141,35 @@ export default {
       ],
       item: 1
     };
+  },
+  methods: {
+    aumentarContador() {
+      this.contador++;
+    },
+    print(param) {
+      return `Esto es un método,
+      y imprime la varibale: ${param} que se pasaó como parametro`;
+    },
+    anotherPrint() {
+      console.log(
+        "Esto es otro método, por el momento solo pinta en la consola"
+      );
+    },
+    calculate() {
+      return this.numero * 5;
+    },
+    sumarPuntos() {
+      total++;
+      return total;
+    },
+    sumarCincoDouble(){
+      return this.double+5
+    }
+  },
+  computed: {
+    double() {
+      return this.contador * 2;
+    }
   },
   props: {
     msg: String
