@@ -52,6 +52,7 @@ export default {
         },
 
         { title: "Tareas", icon: "fas fa-tasks", to: { path: "lists" } },
+         { title: "Usuarios", icon: "fas fa-users", to: { path: "users" } },
 
       ]
     };

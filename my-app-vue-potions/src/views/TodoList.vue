@@ -46,6 +46,7 @@
 <script>
 export default {
   name: "TodoList",
+
   data() {
     return {
       newTask: "",
