@@ -18,7 +18,8 @@
       </v-row>
       <v-row>
         <v-col col="12">
-          <h2 class="text-center">TAREAS</h2>
+          <h2 class="text-center">TAREAS -  {{message}}</h2>
+
           <v-simple-table :dense="false" :fixed-header="false" height="300">
             <template v-slot:default>
               <thead>
@@ -57,6 +58,13 @@ export default {
         v => v.length <= 10 || "el nombre no puede ser mayor de 10 caracteres"
       ]
     };
+  },
+   props: {
+    message: {
+      type: String,
+      required: true,
+      default: "Hola mundo"
+    }
   },
   methods: {
     crearTarea() {
