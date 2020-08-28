@@ -7,6 +7,9 @@
       <v-icon>fab fa-facebook-f</v-icon>
     </v-btn>
     <CustomButton @aaa="handleClick" text="Botón de ejemplo"></CustomButton>
+    <CustomAvatar>
+       <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+    </CustomAvatar>
   </div>
 </template>
 
@@ -15,6 +18,7 @@
 import MiComponente from "@/components/MiComponente.vue";
 import Dialog from "@/components/Dialog";
 import CustomButton from "@/components/CustomButton";
+import CustomAvatar from "@/components/CustomAvatar"
 
 export default {
   name: "Home",
@@ -26,7 +30,8 @@ export default {
   components: {
     MiComponente,
     CustomButton,
-    Dialog
+    Dialog,
+    CustomAvatar
   },
   methods: {
     goToTodoList() {
